@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://caqefhu4ttwif"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_53dya"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s746a"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5nud"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1kpk4"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 400.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_53dya")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_s746a")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_b5nud")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.5, 0)
+attributes = SubResource("CameraAttributesPractical_1kpk4")

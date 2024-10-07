@@ -1,0 +1,8 @@
+
+*.bin
+*.cache
+*.ctex
+*.cfg
+*.md5
+.godot/editor/filesystem_update4
+.godot/editor/filesystem_cache8
