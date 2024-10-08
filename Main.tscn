@@ -67,7 +67,7 @@ shape = SubResource("BoxShape3D_xefnj")
 mesh = SubResource("BoxMesh_1en34")
 
 [node name="Block3" type="StaticBody3D" parent="Terrain"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 14.946, 5, 0)
+transform = Transform3D(4.6376, 8.85961, 0, -8.85961, 4.6376, 0, 0, 0, 10, 14.946, -2.46963, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/Block3"]
 shape = SubResource("BoxShape3D_ao1lu")
