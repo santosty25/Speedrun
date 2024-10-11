@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://drsvtj0kmn8h5"]
+[gd_scene load_steps=17 format=3 uid="uid://drsvtj0kmn8h5"]
 
 [ext_resource type="Script" path="res://test_level.gd" id="1_2gfdx"]
 [ext_resource type="PackedScene" uid="uid://caqefhu4ttwif" path="res://Player/Player.tscn" id="1_k7k1a"]
 [ext_resource type="Script" path="res://Player/TestPlayerY.gd" id="2_hlbyp"]
+[ext_resource type="Script" path="res://stopwatch.gd" id="4_psoig"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nfdbq"]
 sky_top_color = Color(0.520752, 0.808158, 0.987228, 1)
@@ -38,6 +39,9 @@ material = SubResource("StandardMaterial3D_80hs2")
 size = Vector3(0.727539, 1.11761, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_qipoc"]
+
+[sub_resource type="Theme" id="Theme_yo0k8"]
+default_font_size = 80
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_2gfdx")
@@ -103,8 +107,9 @@ shape = SubResource("BoxShape3D_0o0jd")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground6"]
 mesh = SubResource("BoxMesh_mp222")
 
-[node name="EndGround" type="StaticBody3D" parent="."]
+[node name="EndGround" type="Area3D" parent="."]
 transform = Transform3D(-1.09278e-06, 0, 25, 0, 1, 0, -25, 0, -1.09278e-06, -214.048, 2.65966, -214.403)
+disable_mode = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EndGround"]
 shape = SubResource("BoxShape3D_6pkit")
@@ -202,3 +207,25 @@ shape = SubResource("BoxShape3D_udv0a")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ramp"]
 mesh = SubResource("PrismMesh_qipoc")
+
+[node name="Stopwatch" type="LineEdit" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.5
+offset_right = 168.5
+offset_bottom = 118.0
+grow_horizontal = 2
+theme = SubResource("Theme_yo0k8")
+text = "00:00.00"
+alignment = 1
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+script = ExtResource("4_psoig")
+
+[connection signal="body_entered" from="EndGround" to="Player" method="_on_end_ground_body_entered"]

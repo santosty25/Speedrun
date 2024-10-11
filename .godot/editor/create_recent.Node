@@ -1,3 +1,8 @@
+Area3D
+CharacterBody3D
+LineEdit
+TextEdit
+Timer
 MeshInstance3D
 CollisionShape3D
 StaticBody3D
