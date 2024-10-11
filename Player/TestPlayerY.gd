@@ -257,4 +257,5 @@ func default_movement(delta):
 
 
 func _on_end_ground_body_entered(body: Node3D) -> void:
-	win = true
+	if body is CharacterBody3D:
+		win = true
