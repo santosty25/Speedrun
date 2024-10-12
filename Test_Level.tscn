@@ -51,6 +51,7 @@ environment = SubResource("Environment_cj7n7")
 
 [node name="Player" parent="." instance=ExtResource("1_k7k1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27422, 0)
+disable_mode = 1
 script = ExtResource("2_hlbyp")
 
 [node name="Ground" type="StaticBody3D" parent="."]
@@ -109,13 +110,20 @@ mesh = SubResource("BoxMesh_mp222")
 
 [node name="EndGround" type="Area3D" parent="."]
 transform = Transform3D(-1.09278e-06, 0, 25, 0, 1, 0, -25, 0, -1.09278e-06, -214.048, 2.65966, -214.403)
-disable_mode = 2
+disable_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EndGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.285, 0)
 shape = SubResource("BoxShape3D_6pkit")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EndGround"]
 mesh = SubResource("BoxMesh_ky2qk")
+
+[node name="TestCollision" type="StaticBody3D" parent="EndGround"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndGround/TestCollision"]
+shape = SubResource("BoxShape3D_6pkit")
 
 [node name="Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, 5, 0, 0, 0, 1, 0, 2.52527, -11.9492)
@@ -164,6 +172,7 @@ mesh = SubResource("BoxMesh_mp222")
 
 [node name="Wall6" type="StaticBody3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, 5, 0, 0, 0, 1, -184.497, 7.24426, -117.548)
+disable_mode = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall6"]
 shape = SubResource("BoxShape3D_0o0jd")

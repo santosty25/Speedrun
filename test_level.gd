@@ -22,6 +22,8 @@ func _process(delta: float) -> void:
 		$Player.position = Vector3(0, 0, 0)
 		$Player.rotation = Vector3(0, 0, 0)
 		time = 0
+		$Player.win = false
+		
 
 #Turns total centiseconds into stopwatch time format
 func getTime():	
