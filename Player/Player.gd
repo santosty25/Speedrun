@@ -54,6 +54,9 @@ var is_sliding := false
 var slide_persist_timer = 0
 var slide_camera_corrected = true
 
+
+var win = false
+
 @onready var mesh = $"MeshInstance3D"
 @onready var collision = $"CollisionShape3D"
 @onready var camera = $"Camera3D"
@@ -249,3 +252,8 @@ func default_movement(delta):
 			slide_persist_timer -= delta
 		else:
 			v /= Vector3(FRICTION,1,FRICTION)
+
+
+func _on_end_ground_body_entered(body):
+	if body is CharacterBody3D:
+		win = true

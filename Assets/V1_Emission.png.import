@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3fw02tjqoxk5"
-path.s3tc="res://.godot/imported/V2_Outline.png-9b4c0ecad0a78361b182c05329f5b2cb.s3tc.ctex"
+uid="uid://ubxu2gsat0ml"
+path.s3tc="res://.godot/imported/V1_Emission.png-d5ede9dfb4a62b797a0853783b31448a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://V2_Outline.png"
-dest_files=["res://.godot/imported/V2_Outline.png-9b4c0ecad0a78361b182c05329f5b2cb.s3tc.ctex"]
+source_file="res://Assets/V1_Emission.png"
+dest_files=["res://.godot/imported/V1_Emission.png-d5ede9dfb4a62b797a0853783b31448a.s3tc.ctex"]
 
 [params]
 

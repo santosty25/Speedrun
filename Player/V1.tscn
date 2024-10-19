@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://o1tqu3qx8ml5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_augjj"]
-[ext_resource type="PackedScene" uid="uid://cbcsvjblnv80l" path="res://Ultra V1.fbx" id="2_bddq3"]
+[ext_resource type="PackedScene" uid="uid://cbcsvjblnv80l" path="res://Assets/Ultra V1.fbx" id="2_bddq3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5nud"]
 

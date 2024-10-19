@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dajfbilvv0ck2"]
+
+[ext_resource type="Texture2D" uid="uid://cxuakayd2gkf7" path="res://Assets/V1_Albedo.png" id="1_kid4k"]
+[ext_resource type="Texture2D" uid="uid://ubxu2gsat0ml" path="res://Assets/V1_Emission.png" id="2_d4afu"]
+
+[resource]
+albedo_texture = ExtResource("1_kid4k")
+emission_enabled = true
+emission_texture = ExtResource("2_d4afu")

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cbcsvjblnv80l"
-path="res://.godot/imported/Ultra V1.fbx-8df8520a3bb7583d57e27dcf5c893071.scn"
+path="res://.godot/imported/Ultra V1.fbx-7a9d428706ddc52ad26ab6e47ea9ff2d.scn"
 
 [deps]
 
-source_file="res://Ultra V1.fbx"
-dest_files=["res://.godot/imported/Ultra V1.fbx-8df8520a3bb7583d57e27dcf5c893071.scn"]
+source_file="res://Assets/Ultra V1.fbx"
+dest_files=["res://.godot/imported/Ultra V1.fbx-7a9d428706ddc52ad26ab6e47ea9ff2d.scn"]
 
 [params]
 
