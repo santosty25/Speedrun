@@ -40,7 +40,7 @@ material = SubResource("StandardMaterial3D_i2tnd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eo1jk"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D2" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6hmyx")
