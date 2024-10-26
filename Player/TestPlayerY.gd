@@ -55,6 +55,11 @@ var slide_persist_timer = 0
 var slide_camera_corrected = true
 
 var win = false
+var pause = false
+
+var footsteps = ["res://Footsteps/Footstep 1.mp3", "res://Footsteps/Footstep 2.mp3",
+	"res://Footsteps/Footstep 3.mp3", "res://Footsteps/Footstep 4.mp3",
+	"res://Footsteps/Footstep 5.mp3", "res://Footsteps/Footstep 6.mp3"]
 
 @onready var mesh = $"MeshInstance3D"
 @onready var collision = $"CollisionShape3D"
@@ -80,6 +85,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			mouse_captured = true
+		
+		pause = !pause
 	default_movement(delta)
 	
 func default_movement(delta):
@@ -96,9 +103,20 @@ func default_movement(delta):
 	elif !is_on_floor():
 		frame_velocity.x = direction.x * AIR_MOVE_SPEED
 		frame_velocity.z = direction.z * AIR_MOVE_SPEED
+		$FootstepsTimer.stop()
 	else:
 		frame_velocity.x = direction.x * MOVE_SPEED
 		frame_velocity.z = direction.z * MOVE_SPEED
+		
+		# Sound effects handler
+		if Input.is_action_pressed("General_Movement") && !is_sliding:
+			if $FootstepsTimer.is_stopped():
+				var rand = RandomNumberGenerator.new()
+				$SoundEffects.stream = load(footsteps[randi_range(0, 5)])
+				$SoundEffects.play()
+				$FootstepsTimer.start()
+		elif Input.is_action_just_released("General_Movement") || is_sliding:
+			$FootstepsTimer.stop()
 	
 	# calc vertical forces
 	if not is_on_floor():
@@ -137,6 +155,8 @@ func default_movement(delta):
 		
 	var jumped = Input.is_action_just_pressed("Jump")
 	if (jumped || last_input < INPUT_BUFFER_TIME) && (airtime < DEADZONE || air_jumps_left > 0):
+		$SoundEffects.stream = preload("res://hero_jump.wav")
+		$SoundEffects.play()
 		# wall jump or normal jump
 		if is_on_wall() && !is_on_floor():
 			last_wall_jump = 0
@@ -156,6 +176,10 @@ func default_movement(delta):
 		
 	# handle sliding
 	if Input.is_action_pressed("Slide") && is_on_floor():
+		print("Sliding")
+		if $SoundEffects.stream != preload("res://hero_wall_slide.wav") || !$SoundEffects.playing:
+			$SoundEffects.stream = preload("res://hero_wall_slide.wav")
+			$SoundEffects.play()
 		is_sliding = true
 		frame_velocity = Vector3.ZERO
 		# rotate player on first frame
@@ -166,6 +190,8 @@ func default_movement(delta):
 			slide_camera_corrected = false
 			position.y -= 1
 	else:
+		if $SoundEffects.stream == preload("res://hero_wall_slide.wav"):
+			$SoundEffects.stop()
 		is_sliding = false
 		if !slide_camera_corrected:
 			camera.rotation.x += PI/2
@@ -207,6 +233,9 @@ func default_movement(delta):
 	
 	# tell player to actually dash
 	if dashed:
+		print("dashed")
+		$SoundEffects.stream = preload("res://hero_shade_dash_2.wav")
+		$SoundEffects.play()
 		dash_timer = DASH_TIME
 		if DASH_DIR_TYPE == DASH_MOVE_TYPE.INPUT:
 			if direction.length() != 0:
@@ -259,3 +288,10 @@ func default_movement(delta):
 func _on_end_ground_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
 		win = true
+
+
+func _on_footsteps_timer_timeout() -> void:
+	var rand = RandomNumberGenerator.new()
+	var sound = load(footsteps[randi_range(0, 5)])
+	$SoundEffects.stream = sound
+	$SoundEffects.play()

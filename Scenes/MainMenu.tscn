@@ -1,0 +1,139 @@
+[gd_scene load_steps=5 format=3 uid="uid://blafhcxc5opb"]
+
+[ext_resource type="Texture2D" uid="uid://ch635m7m01vuj" path="res://GroundTexture.jpeg" id="1_4v4it"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_c0c2n"]
+[ext_resource type="Texture2D" uid="uid://dmbp4g8518ph1" path="res://FuturisticUIElements/008.png" id="2_uuyrm"]
+[ext_resource type="Texture2D" uid="uid://qqf3e645fhss" path="res://Controls.png" id="4_k73b5"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_c0c2n")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(586.5, 337.5)
+scale = Vector2(2.59957, 2.75)
+texture = ExtResource("1_4v4it")
+
+[node name="Control1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Control1"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 50.0
+offset_right = 811.0
+offset_bottom = 187.0
+theme_override_colors/font_color = Color(0, 0.780392, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "Blueshift"
+
+[node name="PlayButton" type="TextureButton" parent="Control1"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 300.0
+offset_right = 1565.0
+offset_bottom = 596.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_uuyrm")
+
+[node name="Label" type="Label" parent="Control1/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -136.5
+offset_right = 305.5
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsButton" type="TextureButton" parent="Control1"]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 400.0
+offset_right = 1571.0
+offset_bottom = 696.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_uuyrm")
+
+[node name="Label" type="Label" parent="Control1/ControlsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.5
+offset_top = -136.5
+offset_right = 499.5
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Controls"
+
+[node name="QuitButton" type="TextureButton" parent="Control1"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 500.0
+offset_right = 1573.0
+offset_bottom = 796.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_uuyrm")
+
+[node name="Label" type="Label" parent="Control1/QuitButton"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -116.5
+offset_top = -273.0
+offset_right = 302.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2000.0
+offset_right = 2000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = 955.0
+offset_top = 13.0
+offset_right = 973.0
+offset_bottom = 44.0
+scale = Vector2(5, 5)
+text = "X"
+
+[node name="ControlsPic" type="Sprite2D" parent="."]
+position = Vector2(-477, 366)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_k73b5")
+
+[connection signal="pressed" from="Control1/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control1/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="Control1/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control2/Button" to="." method="_on_button_pressed"]

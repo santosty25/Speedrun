@@ -1,0 +1,138 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjtgjj01dsjrk"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_5eylu"]
+[ext_resource type="Texture2D" uid="uid://dihk62tpt2oj5" path="res://MenuBackground.png" id="2_2xxli"]
+[ext_resource type="Texture2D" uid="uid://dmbp4g8518ph1" path="res://FuturisticUIElements/008.png" id="3_1x8m3"]
+[ext_resource type="Texture2D" uid="uid://qqf3e645fhss" path="res://Controls.png" id="4_jnyp6"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5eylu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(592, 331)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_2xxli")
+
+[node name="Control1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Leaderboard" type="TextureButton" parent="Control1"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 200.0
+offset_right = 1565.0
+offset_bottom = 496.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("3_1x8m3")
+
+[node name="Label" type="Label" parent="Control1/Leaderboard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -136.5
+offset_right = 305.5
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 130
+text = "Leaderboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" type="TextureButton" parent="Control1"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 300.0
+offset_right = 1565.0
+offset_bottom = 596.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("3_1x8m3")
+
+[node name="Label" type="Label" parent="Control1/Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -136.5
+offset_right = 305.5
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="Control1"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 400.0
+offset_right = 1565.0
+offset_bottom = 696.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("3_1x8m3")
+
+[node name="Label" type="Label" parent="Control1/Quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -136.5
+offset_right = 305.5
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control1"]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 580.0
+offset_right = 735.0
+offset_bottom = 603.0
+text = "Press N for Nux Mode (Infinite Jumps)"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2000.0
+offset_right = 2000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control2"]
+layout_mode = 0
+offset_left = 955.0
+offset_top = 13.0
+offset_right = 973.0
+offset_bottom = 44.0
+scale = Vector2(5.04287, 5.13478)
+text = "X"
+
+[node name="ControlsPic" type="Sprite2D" parent="."]
+position = Vector2(-477, 366)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_jnyp6")
+
+[connection signal="pressed" from="Control1/Leaderboard" to="." method="_on_leaderboard_pressed"]
+[connection signal="pressed" from="Control1/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Control1/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control2/Button" to="." method="_on_button_pressed"]

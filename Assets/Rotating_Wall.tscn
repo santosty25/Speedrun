@@ -1,12 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgh1d4mms0ong"]
+[gd_scene load_steps=8 format=3 uid="uid://dgh1d4mms0ong"]
+
+[ext_resource type="Texture2D" uid="uid://ce23k7uhjdxm2" path="res://Skybox2.jpeg" id="1_x8xd8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i0u5u"]
 height = 10.0
 radius = 10.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6v68s"]
+albedo_texture = ExtResource("1_x8xd8")
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_3wvqv"]
+material = SubResource("StandardMaterial3D_6v68s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp042"]
+albedo_texture = ExtResource("1_x8xd8")
 
 [sub_resource type="BoxMesh" id="BoxMesh_wdpvc"]
+material = SubResource("StandardMaterial3D_lp042")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gmu2q"]
 size = Vector3(20, 10, 10)

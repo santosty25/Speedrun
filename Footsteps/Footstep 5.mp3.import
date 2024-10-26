@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxw3bf84sait6"
+path="res://.godot/imported/Footstep 5.mp3-88fef7dcc6a909200f1662b1e389776e.mp3str"
+
+[deps]
+
+source_file="res://Footsteps/Footstep 5.mp3"
+dest_files=["res://.godot/imported/Footstep 5.mp3-88fef7dcc6a909200f1662b1e389776e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
