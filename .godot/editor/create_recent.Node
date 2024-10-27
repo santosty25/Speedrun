@@ -1,3 +1,4 @@
+Control
 CollisionShape3D
 MeshInstance3D
 StaticBody3D
@@ -5,11 +6,8 @@ Label
 Button
 HBoxContainer
 VBoxContainer
-Control
 Timer
 AudioStreamPlayer3D
 Sprite2D
-Control
 CenterContainer
 Camera2D
-LineEdit

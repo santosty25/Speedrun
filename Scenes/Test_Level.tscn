@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://drsvtj0kmn8h5"]
+[gd_scene load_steps=21 format=3 uid="uid://drsvtj0kmn8h5"]
 
 [ext_resource type="Script" path="res://Scripts/test_level.gd" id="1_y0vtb"]
+[ext_resource type="PackedScene" uid="uid://djnkcs1s56xy1" path="res://Player/Ghost.tscn" id="2_eaqjk"]
 [ext_resource type="Texture2D" uid="uid://ch635m7m01vuj" path="res://GroundTexture.jpeg" id="2_g75qx"]
 [ext_resource type="PackedScene" uid="uid://caqefhu4ttwif" path="res://Player/Player.tscn" id="3_neqsd"]
 [ext_resource type="Script" path="res://Player/TestPlayerY.gd" id="4_60jxw"]
@@ -45,6 +46,8 @@ default_font_size = 80
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_y0vtb")
+
+[node name="Ghost" parent="." instance=ExtResource("2_eaqjk")]
 
 [node name="Test Level" parent="." instance=ExtResource("9_o58wx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -218.913, 0, -171.323)
@@ -128,16 +131,18 @@ transform = Transform3D(-1.09278e-06, 0, 25, 0, 1, 0, -25, 0, -1.09278e-06, -360
 disable_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EndGround"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.285, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10261, 0.285, 0)
 shape = SubResource("BoxShape3D_6pkit")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EndGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10261, 0, 0)
 mesh = SubResource("BoxMesh_ky2qk")
 
 [node name="TestCollision" type="StaticBody3D" parent="EndGround"]
 disable_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EndGround/TestCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10261, 0, 0)
 shape = SubResource("BoxShape3D_6pkit")
 
 [node name="Wall" type="StaticBody3D" parent="."]
@@ -226,10 +231,11 @@ mesh = SubResource("BoxMesh_mp222")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -168.5
-offset_right = 168.5
+offset_left = -76.0
+offset_right = 260.07
 offset_bottom = 118.0
 grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_yo0k8")
 text = "00:00.00"
 alignment = 1
@@ -262,32 +268,32 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label1" type="Label" parent="LeaderBoard/HBoxContainer/VBoxContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "1st Score"
 
 [node name="Label2" type="Label" parent="LeaderBoard/HBoxContainer/VBoxContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "2nd Score"
 
 [node name="Label3" type="Label" parent="LeaderBoard/HBoxContainer/VBoxContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "3rd Score"
 
 [node name="Label4" type="Label" parent="LeaderBoard/HBoxContainer/VBoxContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "4th Score"
 
 [node name="Label5" type="Label" parent="LeaderBoard/HBoxContainer/VBoxContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "5th Score"
 

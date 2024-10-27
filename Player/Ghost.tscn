@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://djnkcs1s56xy1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s746a"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_s746a")
+skeleton = NodePath("")

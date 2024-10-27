@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://o1tqu3qx8ml5"]
+[gd_scene load_steps=4 format=3 uid="uid://o1tqu3qx8ml5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_augjj"]
 [ext_resource type="PackedScene" uid="uid://cbcsvjblnv80l" path="res://Assets/Ultra V1.fbx" id="2_bddq3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5nud"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1kpk4"]
-dof_blur_far_enabled = true
-dof_blur_far_distance = 400.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_augjj")
@@ -18,8 +14,3 @@ transform = Transform3D(-0.999914, 0, 0.013107, 0, 1, 0, -0.013107, 0, -0.999914
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0210481, -0.34137, 0.144349)
 shape = SubResource("CapsuleShape3D_b5nud")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.5, 0)
-attributes = SubResource("CameraAttributesPractical_1kpk4")
-current = true

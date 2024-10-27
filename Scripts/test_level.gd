@@ -6,11 +6,17 @@ var min = 0
 var centi = 0
 # new changes
 var leaderboard = []
-const leaderboard_path = "C:\\Users\\kawik\\OneDrive\\Desktop\\UniversityOfPortland\\Fall2024\\CS447\\leaderboard.json"
+const leaderboard_path = "user://Leaderboard.json"
+const recording_path = "user://Recording.json"
+
+var recording = []
+var bestTime = []
+@onready var ghost = $Ghost
+var recordingTimer = 0
+const UPDATE_SPEED = 1.0/60
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
 	#new change
 	load_leaderboard()
 	update_leaderboard_ui()
@@ -43,6 +49,25 @@ func load_leaderboard():
 	else:
 		print("Leaderboard file does not exist. Creating new file.")
 		save_leaderboard()
+		
+	if FileAccess.file_exists(recording_path):
+		var file = FileAccess.open(recording_path, FileAccess.READ)
+		if file:
+			var json = JSON.new()
+			var text = file.get_as_text()  # Read the file content
+			var parsed_data = json.parse(text)  # Parse the JSON data
+			if parsed_data == OK:
+				bestTime = json.get_data()  # Retrieve the parsed data
+				print("Recording loaded successfully")
+				print(bestTime)
+			else:
+				print("Error parsing JSON:", json.get_error_string(parsed_data))  # Print error string
+				file.close()
+		else:
+			print("Error: Could not open file to load recording.")
+	else:
+		print("Recording file does not exist. Creating new file.")
+		save_recording()
 
 
 func save_leaderboard():
@@ -55,6 +80,17 @@ func save_leaderboard():
 		file.close()
 	else:
 		print("Error: Could not open file to save leaderboard.")
+		
+func save_recording():
+	# Opens the file in write mode and saves the leaderboard as JSON
+	var file = FileAccess.open(recording_path, FileAccess.WRITE)
+	if file:
+		var json = JSON.new()
+		file.store_string(json.stringify(recording))  # Write actual leaderboard data to file
+		print("Recording saved")
+		file.close()
+	else:
+		print("Error: Could not open file to save recording.")
 
 # Update the UI with the leaderboard times
 func update_leaderboard_ui():
@@ -69,6 +105,9 @@ func on_player_win():
 	if $Player.win:
 		var final_time = getTime()  # Get formatted stopwatch time
 		print("Players winning time: ", final_time)
+		if len(leaderboard) == 0 || final_time < leaderboard[0]:
+			save_recording()
+			load_leaderboard()
 		update_leaderboard(final_time)  # Add formatted time to leaderboard
 		update_leaderboard_ui()  # Update the UI to show the new leaderboard
 		$Stopwatch.text = final_time  # Display final time on the stopwatch
@@ -84,6 +123,8 @@ func reset_player():
 	time = 0  # Reset timer
 	$Stopwatch.text = getTime()  # Update stopwatch display
 	$Player.win = false  # Reset win state
+	recording.clear()
+	recordingTimer = 0
 	
 # Example usage when player wins
 #func on_player_win():
@@ -143,6 +184,22 @@ func getTime():
 		timerString3 = str(centi)
 		
 	return timerString1 + ":" + timerString2 + "." + timerString3
+	
+func _physics_process(delta: float) -> void:
+	# only record if below record
+	if len(leaderboard) == 0 || getTime() < leaderboard[0]:
+		recording.append($Player.position)
+		
+	recordingTimer += delta
+	var recFrame = floori(recordingTimer / UPDATE_SPEED)
+	if recFrame < len(bestTime):
+		var axes = bestTime[recFrame].replace("(","").replace(")","").replace(" ","").split(",")
+		var ghostPos = Vector3(int(axes[0]),int(axes[1]),int(axes[2]))
+		ghost.position = ghostPos
+	elif len(bestTime) > 0:
+		ghost.position = bestTime.back()
+	else:
+		pass
 
 
 func _on_button_pressed() -> void:

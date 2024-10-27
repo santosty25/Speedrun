@@ -31,7 +31,7 @@ const WALL_FORCETIME = 0.1 # time you're forced away from a wall
 # COOLDOWN - a dash charge regenerates every time the cooldown timer runs out
 # HOLLOW_KNIGHT - dashes are treated like a resource which regens instantly when you land. Enforces dash cooldown only when dashing on ground or walls
 enum DASH_TYPE {COOLDOWN,HOLLOW_KNIGHT}
-const DASH = DASH_TYPE.COOLDOWN
+const DASH = DASH_TYPE.HOLLOW_KNIGHT
 # whether the dash direction should be based on input direction or direction player is facing
 enum DASH_MOVE_TYPE {INPUT,FACING}
 const DASH_DIR_TYPE = DASH_MOVE_TYPE.FACING
