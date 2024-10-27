@@ -65,6 +65,7 @@ var footsteps = ["res://Footsteps/Footstep 1.mp3", "res://Footsteps/Footstep 2.m
 @onready var collision = $"CollisionShape3D"
 @onready var camera = $"Camera3D"
 
+
 func _ready():
 	if DASH == DASH_TYPE.HOLLOW_KNIGHT:
 		dash_counters = [0]
@@ -88,6 +89,7 @@ func _physics_process(delta: float) -> void:
 		
 		pause = !pause
 	default_movement(delta)
+
 	
 func default_movement(delta):
 	var frame_velocity = Vector3.ZERO
