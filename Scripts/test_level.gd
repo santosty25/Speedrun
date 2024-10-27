@@ -139,6 +139,9 @@ func _process(delta: float) -> void:
 		$Player/Music.play()
 	time += delta * 100
 	
+	if $Player.velocity.y < -150:
+		reset_player();
+	
 	if !$Player.win && !$Player.pause:
 		$Stopwatch.text = getTime()
 	else:
