@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-class_name TestPlayerY
+class_name V1
 
 # physics constants
 const GRAVITY = 1 # self explanatory
