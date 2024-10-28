@@ -92,3 +92,7 @@ Nux_Mode={
 [physics]
 
 3d/default_gravity=20.0
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
