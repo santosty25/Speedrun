@@ -160,6 +160,8 @@ func _process(delta: float) -> void:
 		$LeaderBoard.visible = $PauseMenu.leaderboardShow
 	else:
 		$LeaderBoard.visible = false
+	
+	$PauseMenu/Control1/NuxModeText.visible = !$Player.nuxMode
 
 #Turns total centiseconds into stopwatch time format
 func getTime():	

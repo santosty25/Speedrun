@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dgh1d4mms0ong" path="res://Assets/Rotating_Wall.tscn" id="3_75hwn"]
 [ext_resource type="Script" path="res://Assets/Rotating_Wall.gd" id="4_eii3s"]
 [ext_resource type="Script" path="res://Assets/Reverse_Rotating_Wall.gd" id="5_p4cup"]
-[ext_resource type="PackedScene" uid="uid://dnf8gc6btnulq" path="res://Scenes/timer_+_leaderboard.tscn" id="6_sqrc8"]
+[ext_resource type="PackedScene" uid="uid://drsvtj0kmn8h5" path="res://Scenes/Test_Level.tscn" id="6_sqrc8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ww17n"]
 sky_top_color = Color(0.520752, 0.808158, 0.987228, 1)
