@@ -6,8 +6,8 @@ var min = 0
 var centi = 0
 # new changes
 var leaderboard = []
-const leaderboard_path = "user://Leaderboard.json"
-const recording_path = "user://Recording.json"
+const leaderboard_path = "C:\\Users\\kawik\\OneDrive\\Desktop\\UniversityOfPortland\\Fall2024\\CS447\\Leaderboard.json"
+const recording_path = "C:\\Users\\kawik\\OneDrive\\Desktop\\UniversityOfPortland\\Fall2024\\CS447\\Recording.json"
 
 var recording = []
 var bestTime = []
@@ -119,6 +119,7 @@ func on_player_win():
 
 			# Reset player position and state
 			reset_player()
+			reset_ghost()
 	else:
 		reset_player()
 
@@ -132,13 +133,15 @@ func reset_player():
 	recording.clear()
 	recordingTimer = 0
 	$Player.reset_run()
+	reset_ghost()
 	
-# Example usage when player wins
-#func on_player_win():
-#	if !$Player.win:
-#		update_leaderboard(time)
-#		$Stopwatch.text = getTime()
-#		$Player.win = true
+func reset_ghost():
+	ghost.visible = true  # Make ghost visible again
+	recordingTimer = 0  # Reset the ghost's recording timer
+	if bestTime.size() > 0:
+		ghost.position = Vector3(0, 0, 0)  # Start ghost at the initial position
+	else:
+		ghost.visible = false  # Hide ghost if there's no recorded best time
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -197,21 +200,42 @@ func getTime():
 		
 	return timerString1 + ":" + timerString2 + "." + timerString3
 	
-func _physics_process(delta: float) -> void:
+#func _physics_process(delta: float) -> void:
 	# only record if below record
-	if len(leaderboard) == 0 || getTime() < leaderboard[0]:
+#	if len(leaderboard) == 0 || getTime() < leaderboard[0]:
+#		recording.append($Player.position)
+#		
+#	recordingTimer += delta
+#	var recFrame = floori(recordingTimer / UPDATE_SPEED)
+#	
+#	if recFrame < len(bestTime):
+#		var axes = bestTime[recFrame].replace("(","").replace(")","").replace(" ","").split(",")
+#		var ghostPos = Vector3(int(axes[0]),int(axes[1]),int(axes[2]))
+#		ghost.position = ghostPos
+#	elif len(bestTime) > 0:
+#		ghost.position = bestTime.back()
+#	
+#	else:
+#		pass
+
+func _physics_process(delta: float) -> void:
+	# Only record if below record
+	if len(leaderboard) == 0 or getTime() < leaderboard[0]:
 		recording.append($Player.position)
 		
 	recordingTimer += delta
 	var recFrame = floori(recordingTimer / UPDATE_SPEED)
-	if recFrame < len(bestTime):
-		var axes = bestTime[recFrame].replace("(","").replace(")","").replace(" ","").split(",")
-		var ghostPos = Vector3(int(axes[0]),int(axes[1]),int(axes[2]))
-		ghost.position = ghostPos
-	elif len(bestTime) > 0:
-		ghost.position = bestTime.back()
+	
+	if recFrame < bestTime.size():
+		# Parse the string to a Vector3 if it's in the string format "(x, y, z)"
+		var axes = bestTime[recFrame].replace("(", "").replace(")", "").replace(" ", "").split(",")
+		if axes.size() == 3:
+			var ghostPos = Vector3(axes[0].to_float(), axes[1].to_float(), axes[2].to_float())
+			ghost.position = ghostPos
 	else:
-		pass
+		# Hide the ghost once it finishes the race
+		ghost.visible = false
+
 
 
 func _on_button_pressed() -> void:
