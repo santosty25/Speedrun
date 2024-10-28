@@ -59,6 +59,8 @@ var slide_persist_timer = 0
 var slide_camera_corrected = true
 var shake_counter = 0
 
+var nuxModeUsed = false
+
 
 var win = false
 
@@ -270,6 +272,13 @@ func default_movement(delta):
 		else:
 			v /= Vector3(FRICTION,1,FRICTION)
 
+
+func verify_run():
+	return !nuxModeUsed
+	
+func reset_run():
+	nuxModeUsed = false
+	v = Vector3.ZERO
 
 func _on_end_ground_body_entered(body):
 	if body is CharacterBody3D:

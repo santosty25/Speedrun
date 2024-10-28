@@ -105,18 +105,21 @@ func update_leaderboard_ui():
 # Called when the player wins
 # Called when the player wins
 func on_player_win():
-	if $Player.win:
-		var final_time = getTime()  # Get formatted stopwatch time
-		print("Players winning time: ", final_time)
-		if len(leaderboard) == 0 || final_time < leaderboard[0]:
-			save_recording()
-			load_leaderboard()
-		update_leaderboard(final_time)  # Add formatted time to leaderboard
-		update_leaderboard_ui()  # Update the UI to show the new leaderboard
-		$Stopwatch.text = final_time  # Display final time on the stopwatch
-		$Player.win = true
+	if $Player.verify_run():
+		if $Player.win:
+			var final_time = getTime()  # Get formatted stopwatch time
+			print("Players winning time: ", final_time)
+			if len(leaderboard) == 0 || final_time < leaderboard[0]:
+				save_recording()
+				load_leaderboard()
+			update_leaderboard(final_time)  # Add formatted time to leaderboard
+			update_leaderboard_ui()  # Update the UI to show the new leaderboard
+			$Stopwatch.text = final_time  # Display final time on the stopwatch
+			$Player.win = true
 
-		# Reset player position and state
+			# Reset player position and state
+			reset_player()
+	else:
 		reset_player()
 
 # Function to reset player position and state
@@ -128,6 +131,7 @@ func reset_player():
 	$Player.win = false  # Reset win state
 	recording.clear()
 	recordingTimer = 0
+	$Player.reset_run()
 	
 # Example usage when player wins
 #func on_player_win():

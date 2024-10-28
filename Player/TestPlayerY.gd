@@ -64,6 +64,7 @@ var shake_counter = 0
 var win = false
 var pause = false
 var nuxMode = false
+var nuxModeUsed = false
 
 var footsteps = ["res://Footsteps/Footstep 1.mp3", "res://Footsteps/Footstep 2.mp3",
 	"res://Footsteps/Footstep 3.mp3", "res://Footsteps/Footstep 4.mp3",
@@ -73,6 +74,13 @@ var footsteps = ["res://Footsteps/Footstep 1.mp3", "res://Footsteps/Footstep 2.m
 @onready var collision = $"CollisionShape3D"
 @onready var camera = $"Camera3D"
 
+
+func verify_run():
+	return !nuxModeUsed
+	
+func reset_run():
+	nuxModeUsed = nuxMode
+	v = Vector3.ZERO
 
 func _ready():
 	if DASH == DASH_TYPE.HOLLOW_KNIGHT:
@@ -100,6 +108,7 @@ func _physics_process(delta: float) -> void:
 	
 	if (Input.is_action_just_pressed("Nux_Mode")):
 		nuxMode = !nuxMode
+		nuxModeUsed = true
 	
 	default_movement(delta)
 
