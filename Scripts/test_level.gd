@@ -6,8 +6,8 @@ var min = 0
 var centi = 0
 # new changes
 var leaderboard = []
-const leaderboard_path = "C:\\Users\\kawik\\OneDrive\\Desktop\\UniversityOfPortland\\Fall2024\\CS447\\Leaderboard.json"
-const recording_path = "C:\\Users\\kawik\\OneDrive\\Desktop\\UniversityOfPortland\\Fall2024\\CS447\\Recording.json"
+const leaderboard_path = "user://Leaderboard.json"
+const recording_path = "user://Recording.json"
 
 var recording = []
 var bestTime = []
