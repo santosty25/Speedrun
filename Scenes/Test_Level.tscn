@@ -305,7 +305,7 @@ scale = Vector2(5.04287, 5.13478)
 text = "X"
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59402, -11.0713)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39062, 2.59402, -11.0713)
 modulate = Color(0, 1, 1, 1)
 outline_modulate = Color(1, 1, 1, 1)
 text = "LEADERBOARD
@@ -313,6 +313,14 @@ text = "LEADERBOARD
 -
 -
 -
+-"
+font_size = 100
+
+[node name="LastScore" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35818, 2.59402, -11.0713)
+modulate = Color(0, 1, 1, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "PREVIOUS SCORE
 -"
 font_size = 100
 

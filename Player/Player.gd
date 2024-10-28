@@ -120,6 +120,8 @@ func default_movement(delta):
 				frame_velocity.y = -clamp(GRAVITY/div,0,GRAVITY)
 		else:
 			frame_velocity.y = -GRAVITY
+			
+		frame_velocity += last_wall_collision
 	
 	# if we're on the floor, our y velocity is 0
 	if is_on_floor() && v.y < 0:

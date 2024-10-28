@@ -15,6 +15,7 @@ const JUMP_FORWARDS_VELOCITY = 8 # forward movement boost on jump
 const WALL_SPEED_BONUS = 3 # extra speed from wall running
 const WALL_JUMP_HORIZONTAL_FORCE = 20 # force player propells off walls on initial jump
 const WALL_REPULSION_FORCE = 50 # force keeping player away from wall after wall jumping
+const WALL_PULL = 10
 const AIR_JUMP_COUNT = 1 # number of double jumps you get, 0 means no double jumping
 const DASH_COOLDOWN = 0.5 # time it takes to regenerate one dash
 const DASH_COUNT = 1 # number of dashes player can have stocked at once
@@ -156,6 +157,8 @@ func default_movement(delta):
 				frame_velocity.y = -clamp(GRAVITY/div,0,GRAVITY)
 		else:
 			frame_velocity.y = -GRAVITY
+			
+		frame_velocity -= last_wall_collision*WALL_PULL
 	
 	# if we're on the floor, our y velocity is 0
 	if is_on_floor() && v.y < 0:

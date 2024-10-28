@@ -105,9 +105,9 @@ func update_leaderboard_ui():
 # Called when the player wins
 # Called when the player wins
 func on_player_win():
+	var final_time = getTime()  # Get formatted stopwatch time
 	if $Player.verify_run():
 		if $Player.win:
-			var final_time = getTime()  # Get formatted stopwatch time
 			print("Players winning time: ", final_time)
 			if len(leaderboard) == 0 || final_time < leaderboard[0]:
 				save_recording()
@@ -122,6 +122,8 @@ func on_player_win():
 			reset_ghost()
 	else:
 		reset_player()
+		
+	$LastScore.text = "PREVIOUS SCORE\n"+str(final_time)
 
 # Function to reset player position and state
 func reset_player():
