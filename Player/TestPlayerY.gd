@@ -63,6 +63,7 @@ var shake_counter = 0
 
 var win = false
 var pause = false
+var nuxMode = false;
 
 var footsteps = ["res://Footsteps/Footstep 1.mp3", "res://Footsteps/Footstep 2.mp3",
 	"res://Footsteps/Footstep 3.mp3", "res://Footsteps/Footstep 4.mp3",
@@ -71,6 +72,7 @@ var footsteps = ["res://Footsteps/Footstep 1.mp3", "res://Footsteps/Footstep 2.m
 @onready var mesh = $"MeshInstance3D"
 @onready var collision = $"CollisionShape3D"
 @onready var camera = $"Camera3D"
+
 
 func _ready():
 	if DASH == DASH_TYPE.HOLLOW_KNIGHT:
@@ -95,7 +97,17 @@ func _physics_process(delta: float) -> void:
 			mouse_captured = true
 		
 		pause = !pause
+	
+	if (Input.is_action_just_pressed("Nux_Mode")):
+		nuxMode = !nuxMode
+	
+	if (nuxMode):
+		air_jumps_left = 9223372036854775807
+	else:
+		air_jumps_left = 1
+	
 	default_movement(delta)
+
 	
 func default_movement(delta):
 	var frame_velocity = Vector3.ZERO

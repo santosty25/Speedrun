@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://drsvtj0kmn8h5"]
+[gd_scene load_steps=20 format=3 uid="uid://drsvtj0kmn8h5"]
 
 [ext_resource type="Script" path="res://Scripts/test_level.gd" id="1_y0vtb"]
 [ext_resource type="PackedScene" uid="uid://djnkcs1s56xy1" path="res://Player/Ghost.tscn" id="2_eaqjk"]
 [ext_resource type="Texture2D" uid="uid://ch635m7m01vuj" path="res://GroundTexture.jpeg" id="2_g75qx"]
-[ext_resource type="PackedScene" uid="uid://caqefhu4ttwif" path="res://Player/Player.tscn" id="3_neqsd"]
-[ext_resource type="Script" path="res://Player/TestPlayerY.gd" id="4_60jxw"]
+[ext_resource type="PackedScene" uid="uid://o1tqu3qx8ml5" path="res://Player/V1.tscn" id="5_krj6c"]
 [ext_resource type="Texture2D" uid="uid://ce23k7uhjdxm2" path="res://Skybox2.jpeg" id="5_nj12f"]
 [ext_resource type="Script" path="res://Scripts/stopwatch.gd" id="6_ocuia"]
 [ext_resource type="AudioStream" uid="uid://dginpkqh8q0dd" path="res://Background Music.mp3" id="7_pefqr"]
@@ -65,6 +64,7 @@ volume_db = -25.0
 autoplay = true
 
 [node name="SoundEffects" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27422, 0)
 volume_db = 80.0
 
 [node name="FootstepsTimer" type="Timer" parent="Player"]

@@ -142,6 +142,9 @@ func _process(delta: float) -> void:
 		$Player/Music.play()
 	time += delta * 100
 	
+	if $Player.velocity.y < -150:
+		reset_player();
+	
 	if !$Player.win && !$Player.pause:
 		$Stopwatch.text = getTime()
 	else:
@@ -160,6 +163,8 @@ func _process(delta: float) -> void:
 		$LeaderBoard.visible = $PauseMenu.leaderboardShow
 	else:
 		$LeaderBoard.visible = false
+	
+	$PauseMenu/Control1/NuxModeText.visible = !$Player.nuxMode
 
 #Turns total centiseconds into stopwatch time format
 func getTime():	
