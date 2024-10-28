@@ -59,7 +59,6 @@ func load_leaderboard():
 			if parsed_data == OK:
 				bestTime = json.get_data()  # Retrieve the parsed data
 				print("Recording loaded successfully")
-				print(bestTime)
 			else:
 				print("Error parsing JSON:", json.get_error_string(parsed_data))  # Print error string
 				file.close()
@@ -94,11 +93,15 @@ func save_recording():
 
 # Update the UI with the leaderboard times
 func update_leaderboard_ui():
+	var allScores = "LEADERBOARD"
 	for i in range(leaderboard.size()):
 		var label = $LeaderBoard/HBoxContainer/VBoxContainer.get_node("Label" + str(i + 1))
 		if label:
 			label.text = str(i + 1) + ": " + leaderboard[i]  # Display rank and time
-			
+			allScores = allScores+"\n"+label.text
+	for i in range(5-leaderboard.size()):
+		allScores = allScores+"\n"+str(leaderboard.size()+i+1)+": ___:___.___"
+	$Label3D.text = allScores
 # Called when the player wins
 # Called when the player wins
 func on_player_win():

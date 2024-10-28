@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://djnkcs1s56xy1"]
+[gd_scene load_steps=3 format=3 uid="uid://djnkcs1s56xy1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s746a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dww3l"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.333333)
+metallic = 1.0
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+proximity_fade_enabled = true
 
 [node name="Player" type="CharacterBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_s746a")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_dww3l")

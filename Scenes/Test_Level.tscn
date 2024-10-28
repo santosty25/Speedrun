@@ -56,12 +56,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -218.913, 0, -171.323)
 environment = SubResource("Environment_cj7n7")
 
 [node name="Player" parent="." instance=ExtResource("3_neqsd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27422, 0)
 disable_mode = 1
 script = ExtResource("4_60jxw")
 
 [node name="Music" type="AudioStreamPlayer3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.27422, 0)
 stream = ExtResource("7_pefqr")
 volume_db = -25.0
 autoplay = true
@@ -305,6 +303,18 @@ offset_right = 973.0
 offset_bottom = 44.0
 scale = Vector2(5.04287, 5.13478)
 text = "X"
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59402, -11.0713)
+modulate = Color(0, 1, 1, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "LEADERBOARD
+-
+-
+-
+-
+-"
+font_size = 100
 
 [connection signal="timeout" from="Player/FootstepsTimer" to="Player" method="_on_footsteps_timer_timeout"]
 [connection signal="body_entered" from="EndGround" to="Player" method="_on_end_ground_body_entered"]

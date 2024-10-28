@@ -21,6 +21,12 @@ const DASH_COUNT = 1 # number of dashes player can have stocked at once
 const DASH_SPEED = 40 # speed player moves while dashing
 const DASH_TIME = 0.1 # time dash lasts
 const SLIDE_BOOST = 20 # initial speed given for slide
+const MAX_SHAKE = 1.5
+const MAX_SHAKE_SPEED = 60
+const MIN_SHAKE_SPEED = 20
+const SHAKE_RATE = 0
+const BASE_FOV = 90
+const MAX_FOV = 500
 
 # tolerance values
 const DEADZONE = 0.1 # time we can still jump after leaving an object
@@ -53,6 +59,7 @@ var dash_direction := Vector3.ZERO
 var is_sliding := false
 var slide_persist_timer = 0
 var slide_camera_corrected = true
+var shake_counter = 0
 
 var win = false
 var pause = false
@@ -75,7 +82,8 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && mouse_captured:
 		rotate_y(deg_to_rad(-event.relative.x*sens))
-		$Camera3D.rotate_x(deg_to_rad(-event.relative.y*sens))
+		camera.rotate_x(deg_to_rad(-event.relative.y*sens))
+		camera.rotation.x = clamp(camera.rotation.x,-PI/2,PI/2)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Capture_Mouse"):
@@ -275,6 +283,22 @@ func default_movement(delta):
 	# apply velocity
 	velocity = v
 	move_and_slide()
+	
+	if velocity.length() > MIN_SHAKE_SPEED:
+		if shake_counter < SHAKE_RATE:
+			shake_counter += delta
+		else:
+			shake_counter = 0
+			var p = min((velocity.length()-MIN_SHAKE_SPEED)/MAX_SHAKE_SPEED,1)
+			var offset = Vector2(randf(),randf()).normalized()*randf()*MAX_SHAKE*p
+			camera.v_offset = offset.x
+			camera.h_offset = offset.y
+			
+			camera.fov = BASE_FOV+abs(camera.fov-BASE_FOV+p*(MAX_FOV-BASE_FOV))/20
+	else:
+		camera.fov = BASE_FOV
+		camera.v_offset = 0
+		camera.h_offset = 0
 	
 	#print(str(landtime)+" "+str(airtime)+" "+str(is_on_floor())+" "+str(direction.length()))
 	if (landtime > FRICTION_DEADZONE || airtime > DEADZONE) && (is_on_floor() || direction.length() == 0):
