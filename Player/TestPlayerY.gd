@@ -63,7 +63,7 @@ var shake_counter = 0
 
 var win = false
 var pause = false
-var nuxMode = false;
+var nuxMode = false
 
 var footsteps = ["res://Footsteps/Footstep 1.mp3", "res://Footsteps/Footstep 2.mp3",
 	"res://Footsteps/Footstep 3.mp3", "res://Footsteps/Footstep 4.mp3",
@@ -100,11 +100,6 @@ func _physics_process(delta: float) -> void:
 	
 	if (Input.is_action_just_pressed("Nux_Mode")):
 		nuxMode = !nuxMode
-	
-	if (nuxMode):
-		air_jumps_left = 9223372036854775807
-	else:
-		air_jumps_left = 1
 	
 	default_movement(delta)
 
@@ -174,7 +169,7 @@ func default_movement(delta):
 			last_wall_jump = WALL_FORCETIME # fixes buggy interaction if you jump between walls too fast
 		
 	var jumped = Input.is_action_just_pressed("Jump")
-	if (jumped || last_input < INPUT_BUFFER_TIME) && (airtime < DEADZONE || air_jumps_left > 0):
+	if (jumped || last_input < INPUT_BUFFER_TIME) && (airtime < DEADZONE || air_jumps_left > 0 || nuxMode):
 		$SoundEffects.stream = preload("res://hero_jump.wav")
 		$SoundEffects.play()
 		# wall jump or normal jump

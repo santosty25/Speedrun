@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/V!.gd" id="1_oty73"]
 [ext_resource type="PackedScene" uid="uid://cbcsvjblnv80l" path="res://Assets/Ultra V1.fbx" id="2_bddq3"]
-[ext_resource type="AnimationLibrary" uid="uid://8kvbtk07k5ll" path="res://Assets/Imported.res" id="3_pjmo1"]
+[ext_resource type="AnimationLibrary" path="res://Assets/Imported.res" id="3_pjmo1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5nud"]
 
@@ -10,7 +10,7 @@
 dof_blur_far_enabled = true
 dof_blur_far_distance = 400.0
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player2" type="CharacterBody3D"]
 script = ExtResource("1_oty73")
 
 [node name="Ultra V1" parent="." instance=ExtResource("2_bddq3")]
